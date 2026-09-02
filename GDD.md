@@ -2,6 +2,7 @@
 
 ## 1. Visão Geral do Jogo
 
+- **Título:** Combo Tactics
 - **Gênero e Sistema:** RPG de turno focado em gerenciamento de esquadrão e combate tático 1v1 alternado.
 - **Público-Alvo:** Fãs de RPG tático (+14 anos), entusiastas de otimização de builds e jogadores de PvP competitivo.
 - **Classificação Indicativa:** 14 anos.
