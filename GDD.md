@@ -8,7 +8,7 @@
 - **Modos de Jogo:** Multiplayer, Singleplayer, Player versus Player (PvP), Player vs IA.
 - **Temática Central:** Um torneio de arena/clube da luta onde o jogador gerencia e reveza uma equipe de três lutadores em combates de alto risco.
 - **Diferenciais:** Habilidades combinatórias de classe e sistema de apostas/gambling.
-- **Referências e Competidores:** Persona, Pokémon, Baldur's Gate, Expedition 33, Honkai: Star Rail, Darkest Dungeon, Slay the Spire, Fire Emblem, Final Fantasy.
+- **Referências e Competidores:** Persona, Pokémon, Baldur's Gate, Expedition 33.
 
 ## 2. Resumo da Jogabilidade
 
