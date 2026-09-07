@@ -2,13 +2,14 @@
 
 ## 1. Visão Geral do Jogo
 
+- **Título:** Combo Tactics
 - **Gênero e Sistema:** RPG de turno focado em gerenciamento de esquadrão e combate tático 1v1 alternado.
 - **Público-Alvo:** Fãs de RPG tático (+14 anos), entusiastas de otimização de builds e jogadores de PvP competitivo.
 - **Classificação Indicativa:** 14 anos.
 - **Modos de Jogo:** Multiplayer, Singleplayer, Player versus Player (PvP), Player vs IA.
-- **Temática Central:** Um desafio de arena/clube da luta onde o jogador gerencia e reveza uma equipe de três lutadores em combates de alto risco.
+- **Temática Central:** Um torneio de arena/clube da luta onde o jogador gerencia e reveza uma equipe de três lutadores em combates de alto risco.
 - **Diferenciais:** Habilidades combinatórias de classe e sistema de apostas/gambling.
-- **Referências e Competidores:** Persona, Pokémon, Baldur's Gate, Expedition 33, Honkai: Star Rail, Darkest Dungeon, Slay the Spire, Fire Emblem, Final Fantasy.
+- **Referências e Competidores:** Persona, Pokémon, Baldur's Gate, Expedition 33.
 
 ## 2. Resumo da Jogabilidade
 
@@ -125,7 +126,7 @@ Quando o personagem do jogador é alvo de um ataque, abre-se uma janela de tempo
 
 ### 5.6 Efeitos de Rodadas
 
-A cada 3 rodadas, um sorteio no estilo cassino altera o ambiente da arena, que passa a favorecer alguns personagens e prejudicar outros. O efeito do ambiente é aplicado apenas na rodada vigente.
+A cada 3 rodadas, um sorteio no estilo cassino altera o ambiente da arena, que passa a favorecer alguns personagens e prejudicar outros. O efeito do ambiente é aplicado apenas na rodada sorteada, com +-10% no dano.
 
 Ambientes e seus efeitos:
 
