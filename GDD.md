@@ -85,7 +85,7 @@ Os valores abaixo foram equilibrados por simulação: os nove personagens têm p
 | Personagem | Aparência | HP | Ataque | Defesa | Velocidade | Habilidades |
 | --- | --- | --- | --- | --- | --- | --- |
 | Mago de Fogo | Bruxo-fênix | 560 | 171 | 15 | 52 | Bola de Fogo, Explosão Solar, Chuva de Meteoros |
-| Mago de Água | Poseidon | 560 | 160 | 25 | 65 | Jato de Pressão, Prisão Gélida, Nevasca |
+| Mago de Água | Sapo mago | 560 | 160 | 25 | 65 | Jato de Pressão, Prisão Gélida, Nevasca |
 | Mago de Planta | Cogumelo | 560 | 153 | 35 | 48 | Chicote de Vinhas, Esporos Tóxicos, Rajada de Folhas Cortantes |
 
 ### 4.3 Tanques
@@ -93,7 +93,7 @@ Os valores abaixo foram equilibrados por simulação: os nove personagens têm p
 | Personagem | Aparência | HP | Ataque | Defesa | Velocidade | Habilidades |
 | --- | --- | --- | --- | --- | --- | --- |
 | Tanque de Fogo | Dragão | 880 | 73 | 75 | 27 | Escudo de Magma, Provocação Ardente, Impacto de Cinzas |
-| Tanque de Água | Baleia | 880 | 68 | 85 | 40 | Barreira Hidráulica, Carapaça de Gelo, Maremoto Punitivo |
+| Tanque de Água | Poseidon | 880 | 68 | 85 | 40 | Barreira Hidráulica, Carapaça de Gelo, Maremoto Punitivo |
 | Tanque de Planta | Árvore | 880 | 63 | 95 | 23 | Muralha de Troncos, Absorção Vital, Casca Grossa |
 
 ## 5. Mecânicas
