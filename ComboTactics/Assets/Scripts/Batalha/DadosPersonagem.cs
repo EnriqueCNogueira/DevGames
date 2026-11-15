@@ -18,8 +18,13 @@ public class DadosPersonagem : ScriptableObject
     public string tecnica;
     public string especial;
 
-    [Header("Visual")]
-    public Sprite[] spritesParado; // quadros da animacao Idle (primeira linha do sheet)
+    // quadros de cada animacao, na ordem das linhas do sheet
+    [Header("Animacoes")]
+    public Sprite[] spritesParado;   // Idle: _0 a _5
+    public Sprite[] spritesAtaque;   // Attack: _6 a _11 (golpe basico e tecnica)
+    public Sprite[] spritesDano;     // Hurt: _12 a _14
+    public Sprite[] spritesDerrota;  // Death: _15 a _20
+    public Sprite[] spritesEspecial; // Special: _21 a _28
 
     public string NomeDoGolpe(TipoGolpe tipo)
     {
