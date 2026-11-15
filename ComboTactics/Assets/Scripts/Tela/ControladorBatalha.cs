@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -26,6 +27,7 @@ public class ControladorBatalha : MonoBehaviour
     public TMP_Text textoMensagens;
 
     Batalha batalha;
+    bool animando; // enquanto o golpe aparece na tela, os botoes ficam travados
 
     void Start()
     {
@@ -71,23 +73,51 @@ public class ControladorBatalha : MonoBehaviour
 
     void UsarGolpe(TipoGolpe golpe)
     {
-        int atacante = batalha.JogadorDaVez;
-        int defensor = 1 - atacante;
+        if (animando)
+            return;
 
+        int atacante = batalha.JogadorDaVez;
         if (!batalha.Atacar(golpe))
             return;
 
-        Arena(atacante).Atacar();
+        StartCoroutine(MostrarGolpe(atacante, golpe));
+    }
+
+    // A regra ja foi aplicada pela Batalha. Aqui so mostra na tela:
+    // o atacante comeca o golpe, e o alvo reage quando o golpe "acerta".
+    IEnumerator MostrarGolpe(int atacante, TipoGolpe golpe)
+    {
+        int defensor = 1 - atacante;
+        bool especial = golpe == TipoGolpe.Especial;
+
+        animando = true;
+        TravarBotoes();
+        Arena(atacante).Atacar(especial);
+
+        yield return new WaitForSeconds(especial ? 0.5f : 0.3f);
+
         if (batalha.Equipes[defensor].Ativo.EstaVivo)
             Arena(defensor).LevarDano();
         else
             Arena(defensor).Derrotado();
+        AtualizarTela(); // a barra de vida desce na hora do acerto
 
+        yield return new WaitForSeconds(0.5f);
+        animando = false;
         AtualizarTela();
+    }
+
+    void TravarBotoes()
+    {
+        foreach (Button b in botoesGolpe) b.interactable = false;
+        foreach (Button b in botoesTroca) b.interactable = false;
     }
 
     void TrocarPersonagem(int indice)
     {
+        if (animando)
+            return;
+
         // depois de uma derrota, o botao de troca serve para escolher quem entra
         if (batalha.AguardandoSubstituto())
         {
@@ -109,7 +139,7 @@ public class ControladorBatalha : MonoBehaviour
     {
         painelJogador1.Atualizar(batalha.Equipes[0]);
         painelJogador2.Atualizar(batalha.Equipes[1]);
-        MostrarUltimasMensagens(4);
+        MostrarUltimasMensagens(3); // cabem 3 linhas na caixa de mensagens
 
         if (batalha.Terminou)
         {
@@ -154,6 +184,9 @@ public class ControladorBatalha : MonoBehaviour
             MudarTexto(botoesTroca[i], texto);
             botoesTroca[i].interactable = equipe.PodeTrocarPara(i);
         }
+
+        if (animando)
+            TravarBotoes();
     }
 
     void MostrarUltimasMensagens(int quantidade)
