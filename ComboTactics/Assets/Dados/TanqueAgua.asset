@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d72592a0e569248b1c30c71796b77c, type: 3}
+  m_Name: TanqueAgua
+  m_EditorClassIdentifier: ComboTactics::DadosPersonagem
+  nome: Poseidon
+  classe: 2
+  elemento: 1
+  vida: 880
+  ataque: 68
+  defesa: 85
+  velocidade: 40
+  golpeBasico: "Barreira Hidr\xE1ulica"
+  tecnica: Maremoto Punitivo
+  especial: "Carapa\xE7a de Gelo"
+  spritesParado:
+  - {fileID: 7599194353985311511, guid: 1cb10cba82618f641a68fa782fbc7815, type: 3}
+  - {fileID: -7981597043433344419, guid: 1cb10cba82618f641a68fa782fbc7815, type: 3}
+  - {fileID: 4566599397372917522, guid: 1cb10cba82618f641a68fa782fbc7815, type: 3}
+  - {fileID: 236219156736906800, guid: 1cb10cba82618f641a68fa782fbc7815, type: 3}
+  - {fileID: 4587996737323391596, guid: 1cb10cba82618f641a68fa782fbc7815, type: 3}
+  - {fileID: 1705736205732399413, guid: 1cb10cba82618f641a68fa782fbc7815, type: 3}

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d72592a0e569248b1c30c71796b77c, type: 3}
+  m_Name: MagoPlanta
+  m_EditorClassIdentifier: ComboTactics::DadosPersonagem
+  nome: Cogumelo
+  classe: 1
+  elemento: 2
+  vida: 560
+  ataque: 153
+  defesa: 35
+  velocidade: 48
+  golpeBasico: Chicote de Vinhas
+  tecnica: Rajada de Folhas Cortantes
+  especial: "Esporos T\xF3xicos"
+  spritesParado:
+  - {fileID: -4119106416009429281, guid: 67eeadb0e43a7364aade524442a538a2, type: 3}
+  - {fileID: 1366171211136163766, guid: 67eeadb0e43a7364aade524442a538a2, type: 3}
+  - {fileID: 2887839141684128908, guid: 67eeadb0e43a7364aade524442a538a2, type: 3}
+  - {fileID: -8321631755162309716, guid: 67eeadb0e43a7364aade524442a538a2, type: 3}
+  - {fileID: 2287785813162499531, guid: 67eeadb0e43a7364aade524442a538a2, type: 3}
+  - {fileID: 4663473045127849528, guid: 67eeadb0e43a7364aade524442a538a2, type: 3}

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d72592a0e569248b1c30c71796b77c, type: 3}
+  m_Name: GuerreiroAgua
+  m_EditorClassIdentifier: ComboTactics::DadosPersonagem
+  nome: "Tubar\xE3o"
+  classe: 0
+  elemento: 1
+  vida: 620
+  ataque: 119
+  defesa: 55
+  velocidade: 90
+  golpeBasico: "L\xE2mina de Correnteza"
+  tecnica: Defesa Fluida
+  especial: "Impacto G\xEAiser"
+  spritesParado:
+  - {fileID: -7410464737138534317, guid: f80d37507ef277f469690f8b68b6041a, type: 3}
+  - {fileID: -5687471368760161302, guid: f80d37507ef277f469690f8b68b6041a, type: 3}
+  - {fileID: 2463346915741429968, guid: f80d37507ef277f469690f8b68b6041a, type: 3}
+  - {fileID: -4561033718750251358, guid: f80d37507ef277f469690f8b68b6041a, type: 3}
+  - {fileID: 3153388513351534139, guid: f80d37507ef277f469690f8b68b6041a, type: 3}
+  - {fileID: -8506973629823019808, guid: f80d37507ef277f469690f8b68b6041a, type: 3}

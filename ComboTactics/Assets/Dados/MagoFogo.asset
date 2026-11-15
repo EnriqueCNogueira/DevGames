@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d72592a0e569248b1c30c71796b77c, type: 3}
+  m_Name: MagoFogo
+  m_EditorClassIdentifier: ComboTactics::DadosPersonagem
+  nome: "F\xEAnix"
+  classe: 1
+  elemento: 0
+  vida: 560
+  ataque: 171
+  defesa: 15
+  velocidade: 52
+  golpeBasico: Bola de Fogo
+  tecnica: Chuva de Meteoros
+  especial: "Explos\xE3o Solar"
+  spritesParado:
+  - {fileID: -6691641518258726303, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -703381686695380703, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -3978246549440399411, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -2801218041761362510, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 6512638895860929439, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 95163010923671816, guid: b0134d109b52749459440e13721f1719, type: 3}

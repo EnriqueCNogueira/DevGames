@@ -18,6 +18,9 @@ public class DadosPersonagem : ScriptableObject
     public string tecnica;
     public string especial;
 
+    [Header("Visual")]
+    public Sprite[] spritesParado; // quadros da animacao Idle (primeira linha do sheet)
+
     public string NomeDoGolpe(TipoGolpe tipo)
     {
         switch (tipo)
