@@ -72,29 +72,31 @@ Exemplo: um Mago de Fogo contra um Tanque de Planta tem vantagem de classe (Mago
 
 Os valores abaixo foram equilibrados por simulação: os nove personagens têm poder de combate equivalente, e o resultado de cada duelo é decidido pelas vantagens de elemento e classe da seção 3.3, não por atributos superiores.
 
+O nome de cada personagem é o mesmo exibido no jogo; a coluna Tipo é a combinação de classe e elemento.
+
 ### 4.1 Guerreiros
 
-| Personagem | Aparência | HP | Ataque | Defesa | Velocidade | Habilidades |
+| Personagem | Tipo | HP | Ataque | Defesa | Velocidade | Habilidades |
 | --- | --- | --- | --- | --- | --- | --- |
-| Guerreiro de Fogo | Mula sem cabeça | 620 | 130 | 45 | 77 | Corte Flamejante, Investida Vulcânica, Brado de Calor |
-| Guerreiro de Água | Guerreiro-tubarão | 620 | 119 | 55 | 90 | Lâmina de Correnteza, Impacto Geiser, Defesa Fluida |
-| Guerreiro de Planta | Curupira | 620 | 112 | 65 | 73 | Esmagamento com Raízes, Escudo de Madeira, Golpe Espinhoso |
+| Mula sem cabeça | Guerreiro de Fogo | 620 | 130 | 45 | 77 | Corte Flamejante, Investida Vulcânica, Brado de Calor |
+| Tubarão | Guerreiro de Água | 620 | 119 | 55 | 90 | Lâmina de Correnteza, Impacto Geiser, Defesa Fluida |
+| Curupira | Guerreiro de Planta | 620 | 112 | 65 | 73 | Esmagamento com Raízes, Escudo de Madeira, Golpe Espinhoso |
 
 ### 4.2 Magos
 
-| Personagem | Aparência | HP | Ataque | Defesa | Velocidade | Habilidades |
+| Personagem | Tipo | HP | Ataque | Defesa | Velocidade | Habilidades |
 | --- | --- | --- | --- | --- | --- | --- |
-| Mago de Fogo | Bruxo-fênix | 560 | 171 | 15 | 52 | Bola de Fogo, Explosão Solar, Chuva de Meteoros |
-| Mago de Água | Sapo mago | 560 | 160 | 25 | 65 | Jato de Pressão, Prisão Gélida, Nevasca |
-| Mago de Planta | Cogumelo | 560 | 153 | 35 | 48 | Chicote de Vinhas, Esporos Tóxicos, Rajada de Folhas Cortantes |
+| Fênix | Mago de Fogo | 560 | 171 | 15 | 52 | Bola de Fogo, Explosão Solar, Chuva de Meteoros |
+| Sapo Feiticeiro | Mago de Água | 560 | 160 | 25 | 65 | Jato de Pressão, Prisão Gélida, Nevasca |
+| Cogumelo | Mago de Planta | 560 | 153 | 35 | 48 | Chicote de Vinhas, Esporos Tóxicos, Rajada de Folhas Cortantes |
 
 ### 4.3 Tanques
 
-| Personagem | Aparência | HP | Ataque | Defesa | Velocidade | Habilidades |
+| Personagem | Tipo | HP | Ataque | Defesa | Velocidade | Habilidades |
 | --- | --- | --- | --- | --- | --- | --- |
-| Tanque de Fogo | Dragão | 880 | 73 | 75 | 27 | Escudo de Magma, Provocação Ardente, Impacto de Cinzas |
-| Tanque de Água | Poseidon | 880 | 68 | 85 | 40 | Barreira Hidráulica, Carapaça de Gelo, Maremoto Punitivo |
-| Tanque de Planta | Árvore | 880 | 63 | 95 | 23 | Muralha de Troncos, Absorção Vital, Casca Grossa |
+| Dragão | Tanque de Fogo | 880 | 73 | 75 | 27 | Escudo de Magma, Provocação Ardente, Impacto de Cinzas |
+| Poseidon | Tanque de Água | 880 | 68 | 85 | 40 | Barreira Hidráulica, Carapaça de Gelo, Maremoto Punitivo |
+| Árvore guerreira | Tanque de Planta | 880 | 63 | 95 | 23 | Muralha de Troncos, Absorção Vital, Casca Grossa |
 
 ## 5. Mecânicas
 
