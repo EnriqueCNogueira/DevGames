@@ -5,7 +5,7 @@ logo (menu.jpeg). Rodar a partir da pasta ComboTactics:
 
     python Ferramentas/gerar_sprites_ui.py
 
-Saida em Assets/UI/Sprites. Os botoes sao 9-slice com borda de 8 texels; no
+Saida em Assets/UI/Sprites. Botoes e paineis sao 9-slice (borda no Unity); no
 Unity cada texel vale 3 unidades do canvas (PPU 33.333), a mesma densidade dos
 personagens com a Pixel Perfect Camera em 640x360.
 """
@@ -48,6 +48,19 @@ FOLHA_ESCURA = "#244a2e"
 FOLHA = "#3f7838"
 FOLHA_CLARA = "#7aaa44"
 FOLHA_BRILHO = "#cadd78"
+AGUA_SOMBRA = "#1c3f66"
+AGUA = "#2a6e9c"
+AGUA_CLARA = "#44a6c8"
+AGUA_BRILHO = "#a8dcec"
+ACO_BRILHO = "#c4cad6"
+CABO = "#5a3418"
+MAGIA_ESCURA = "#3a1e5a"
+MAGIA_SOMBRA = "#6a3aa0"
+MAGIA = "#b46adc"
+MAGIA_BRILHO = "#e8b8f4"
+FUNDO_PAINEL = "#1e1719"
+FUNDO_PAINEL_CLARO = "#261d1e"
+FUNDO_SLOT = "#141012"
 
 LARGURA = 128
 ALTURA = 40
@@ -316,11 +329,328 @@ ESTILOS = {
 }
 
 
+# ---------------------------------------------------------------- paineis
+
+def moldura_fina(w, h, moldura, fundo, fundo_claro, semente, cantos=None):
+    """Painel 9-slice: moldura de 4 texels e interior escuro quase liso,
+    para repetir sem emenda visivel em qualquer tamanho."""
+    luz, clara, base, escura, sombra = moldura
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    rnd = random.Random(semente)
+    for y in range(h):
+        for x in range(w):
+            a = anel(x, y, w, h)
+            if a < 0:
+                continue
+            l = lado(x, y, w, h)
+            de_cima = l in ("cima", "esq")
+            if a == 0:
+                cor = CONTORNO
+            elif a == 1:
+                cor = (luz if l == "cima" else clara) if de_cima else sombra
+            elif a == 2:
+                cor = base
+            elif a == 3:
+                cor = escura
+            elif a == 4:
+                cor = CONTORNO
+            else:
+                cor = fundo_claro if rnd.random() < 0.06 else fundo
+            img.putpixel((x, y), rgba(cor))
+    # sombra interna embaixo da moldura de cima
+    for x in range(5, w - 5):
+        img.putpixel((x, 5), rgba(CONTORNO))
+    if cantos:
+        for ex in (False, True):
+            for ey in (False, True):
+                placa_canto(img, ex, ey, cantos)
+    return img
+
+
+PAINEIS = {
+    # cartao e paineis comuns: bronze escuro; o ativo fica em ouro
+    "Painel_Normal": ((BRONZE_CLARO, BRONZE, BRONZE_ESCURO, BRONZE_SOMBRA, BRONZE_SOMBRA2), FUNDO_PAINEL, FUNDO_PAINEL_CLARO),
+    "Painel_Hover": ((OURO_BRILHO, OURO, BRONZE_CLARO, BRONZE, BRONZE_ESCURO), FUNDO_PAINEL_CLARO, "#30252a"),
+    "Painel_Pressionado": ((BRONZE, BRONZE_ESCURO, BRONZE_SOMBRA, BRONZE_SOMBRA2, CONTORNO), FUNDO_SLOT, FUNDO_PAINEL),
+    "Painel_Desabilitado": ((FERRO_LUZ, FERRO_CLARO, FERRO, FERRO_ESCURO, FERRO_SOMBRA), "#17151a", "#1d1b20"),
+}
+
+
+def slot(titular):
+    """Nicho da equipe. O do titular tem moldura de ouro e gemas nos cantos."""
+    w = h = 40
+    if titular:
+        moldura = (OURO_BRILHO, OURO, BRONZE_CLARO, BRONZE, BRONZE_ESCURO)
+        cantos = (CONTORNO, OURO_BRILHO, OURO, BRONZE_CLARO, BRONZE, BRASA, BRASA_CLARA, BRASA_BRILHO)
+    else:
+        moldura = (FERRO_LUZ, FERRO_CLARO, FERRO, FERRO_ESCURO, FERRO_SOMBRA)
+        cantos = None
+    img = moldura_fina(w, h, moldura, FUNDO_SLOT, "#191416", 5)
+    # o nicho e fundo: sombra mais grossa em cima e na esquerda
+    for x in range(5, w - 5):
+        img.putpixel((x, 6), rgba("#0f0c0e"))
+    for y in range(5, h - 5):
+        img.putpixel((5, y), rgba(CONTORNO))
+    if cantos:
+        for ex in (False, True):
+            for ey in (False, True):
+                placa_canto(img, ex, ey, cantos)
+    return img
+
+
+def barra_fundo():
+    """Trilho da barra de atributo: 9-slice com borda de 2 texels."""
+    w, h = 12, 6
+    img = Image.new("RGBA", (w, h), rgba(CONTORNO))
+    for y in range(1, h - 1):
+        for x in range(1, w - 1):
+            img.putpixel((x, y), rgba(FUNDO_SLOT))
+    for x in range(1, w - 1):
+        img.putpixel((x, h - 2), rgba("#2a2226"))
+    return img
+
+
+def barra_preenchimento():
+    """Preenchimento em tons de cinza, tingido pela cor do atributo no Unity."""
+    w, h = 8, 4
+    tons = ["#ffffff", "#e6e6e6", "#c8c8c8", "#9a9a9a"]
+    img = Image.new("RGBA", (w, h))
+    for y in range(h):
+        for x in range(w):
+            img.putpixel((x, y), rgba(tons[y]))
+    return img
+
+
+def selo():
+    """Plaquinha clara 9-slice (borda 3) para os selos J1 e J2, tingida no Unity."""
+    w, h = 12, 10
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    for y in range(h):
+        for x in range(w):
+            a = anel(x, y, w, h)
+            if a < 0:
+                continue
+            if a == 0:
+                cor = CONTORNO
+            elif a == 1:
+                cor = "#ffffff" if y < h // 2 else "#a0a0a0"
+            else:
+                cor = "#d8d8d8"
+            img.putpixel((x, y), rgba(cor))
+    return img
+
+
+def seta():
+    """Seta para baixo dos ciclos de vantagem, em bronze."""
+    desenho = [
+        "..OOOO..",
+        "..OLBO..",
+        "..OLBO..",
+        "OOOLBOOO",
+        "OLLLBBDO",
+        ".OLBBDO.",
+        "..OBDO..",
+        "...OO...",
+    ]
+    return de_texto(desenho, {"O": CONTORNO, "L": OURO, "B": BRONZE_CLARO, "D": BRONZE})
+
+
+def seta_ciclo():
+    """Seta longa dos triangulos de vantagem, apontando para a direita."""
+    desenho = [
+        "..............OO....",
+        "..............OLO...",
+        "OOOOOOOOOOOOOOOLLO..",
+        "OLLLLLLLLLLLLLLBBLO.",
+        "OBBBBBBBBBBBBBBBBBLO",
+        "ODDDDDDDDDDDDDDBBDO.",
+        "OOOOOOOOOOOOOOODDO..",
+        "..............ODO...",
+        "..............OO....",
+    ]
+    return de_texto(desenho, {"O": CONTORNO, "L": OURO_BRILHO, "B": BRONZE_CLARO, "D": BRONZE})
+
+
+# ----------------------------------------------------------------- icones
+
+def de_texto(linhas, cores):
+    h, w = len(linhas), max(len(l) for l in linhas)
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    for y, linha in enumerate(linhas):
+        for x, c in enumerate(linha):
+            if c != ".":
+                img.putpixel((x, y), rgba(cores[c]))
+    return img
+
+
+def contornar(img):
+    """Contorno escuro de 1 texel em volta da forma (4 vizinhos)."""
+    w, h = img.size
+    out = img.copy()
+    for y in range(h):
+        for x in range(w):
+            if img.getpixel((x, y))[3]:
+                continue
+            for ox, oy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                qx, qy = x + ox, y + oy
+                if 0 <= qx < w and 0 <= qy < h and img.getpixel((qx, qy))[3]:
+                    out.putpixel((x, y), rgba(CONTORNO))
+                    break
+    return out
+
+
+def centralizar(img, tam):
+    forma = img.crop(img.getbbox())
+    out = Image.new("RGBA", (tam, tam), (0, 0, 0, 0))
+    out.alpha_composite(forma, ((tam - forma.width) // 2, (tam - forma.height) // 2))
+    return out
+
+
+def icone_fogo():
+    d = [
+        "......r.......",
+        "......rr......",
+        ".....rYr...r..",
+        "....rrYYr.rr..",
+        "....rYYYr.rYr.",
+        ".r..rYWYYrrYr.",
+        ".rr.rYWWYYYYr.",
+        "rYrrYYWWWYYYr.",
+        "rYYYYWWWWWYYr.",
+        "rYYYWWWWWWYYr.",
+        "RrYYWWWWWYYrR.",
+        ".RrYYYYYYYrR..",
+        "..RRrrrrrRR...",
+    ]
+    return d, {"R": BRASA_ESCURA, "r": BRASA, "Y": BRASA_CLARA, "W": BRASA_BRILHO}
+
+
+def icone_agua():
+    d = [
+        "......b.......",
+        ".....bbb......",
+        ".....bbb......",
+        "....bcbbb.....",
+        "...bcwbbbb....",
+        "...bcwcbbbb...",
+        "..bcwccbbbbB..",
+        "..bcwcbbbbbB..",
+        "..bccbbbbbbB..",
+        "..bcbbbbbbBB..",
+        "...bbbbbbBB...",
+        "....BBBBBB....",
+    ]
+    return d, {"B": AGUA_SOMBRA, "b": AGUA, "c": AGUA_CLARA, "w": AGUA_BRILHO}
+
+
+def icone_planta():
+    d = [
+        "..........gll.",
+        "........gglll.",
+        "......gglllyl.",
+        ".....ggllllyl.",
+        "....ggllllyll.",
+        "...gglllyylll.",
+        "...gglllylllg.",
+        "...gllyylllgg.",
+        "...glyllllgg..",
+        "...gylllggg...",
+        "...ylgggg.....",
+        "..G...........",
+        ".G............",
+    ]
+    return d, {"G": FOLHA_ESCURA, "g": FOLHA, "l": FOLHA_CLARA, "y": FOLHA_BRILHO}
+
+
+def icone_guerreiro():
+    d = [
+        "...........ww",
+        "..........wsS",
+        ".........wsS.",
+        "........wsS..",
+        ".......wsS...",
+        "......wsS....",
+        ".....wsS.....",
+        ".g..wsS......",
+        ".gg.sS.......",
+        "..gggD.......",
+        "...cgg.......",
+        "..c..gg......",
+        "gc.....g.....",
+        "gg...........",
+    ]
+    return d, {"w": ACO_BRILHO, "s": FERRO_LUZ, "S": FERRO, "g": BRONZE_CLARO, "D": BRONZE, "c": CABO}
+
+
+def icone_mago():
+    d = [
+        "........m...",
+        ".......mP...",
+        "......mmP...",
+        "......mWP...",
+        ".....mmPP...",
+        ".....mmPPP..",
+        "....mmmPPP..",
+        "....mmPPPPP.",
+        "...GGGGGGGD.",
+        "..mmmmPPPPPP",
+        "mmmmmmPPPPPP",
+        ".EEEEEEEEEE.",
+    ]
+    return d, {"m": MAGIA, "P": MAGIA_SOMBRA, "W": MAGIA_BRILHO, "G": BRONZE_CLARO, "D": BRONZE, "E": MAGIA_ESCURA}
+
+
+def icone_tanque():
+    d = [
+        "gggggggggggg",
+        "gLLLLLsSSSSd",
+        "gLwLLLsSSSSd",
+        "gLLLLLsSSSSd",
+        "gLLLLLsSSSSd",
+        "gLLLLggSSSSd",
+        "gLLLggggSSSd",
+        ".gLLLggSSSd.",
+        ".gLLLLsSSSd.",
+        "..gLLLsSSd..",
+        "...gLLsSd...",
+        "....gLSd....",
+        ".....dd.....",
+    ]
+    return d, {"g": BRONZE_CLARO, "d": BRONZE, "L": FERRO_LUZ, "w": ACO_BRILHO, "s": FERRO, "S": FERRO_ESCURO}
+
+
+ICONES = {
+    "Icone_Fogo": icone_fogo,
+    "Icone_Agua": icone_agua,
+    "Icone_Planta": icone_planta,
+    "Icone_Guerreiro": icone_guerreiro,
+    "Icone_Mago": icone_mago,
+    "Icone_Tanque": icone_tanque,
+}
+
+
+def icone(nome):
+    desenho, cores = ICONES[nome]()
+    return centralizar(contornar(centralizar(de_texto(desenho, cores), 18)), 16)
+
+
 def main():
     os.makedirs(SAIDA, exist_ok=True)
     for nome, estilo in ESTILOS.items():
         botao(estilo).save(os.path.join(SAIDA, nome + ".png"))
     trepadeira().save(os.path.join(SAIDA, "Trepadeira.png"))
+    for nome, (moldura, fundo, claro) in PAINEIS.items():
+        moldura_fina(48, 48, moldura, fundo, claro, 3).save(os.path.join(SAIDA, nome + ".png"))
+    slot(False).save(os.path.join(SAIDA, "Slot.png"))
+    slot(True).save(os.path.join(SAIDA, "Slot_Titular.png"))
+    barra_fundo().save(os.path.join(SAIDA, "Barra_Fundo.png"))
+    barra_preenchimento().save(os.path.join(SAIDA, "Barra_Preenchimento.png"))
+    selo().save(os.path.join(SAIDA, "Selo.png"))
+    seta().save(os.path.join(SAIDA, "Seta.png"))
+    seta_ciclo().save(os.path.join(SAIDA, "Seta_Ciclo.png"))
+    os.makedirs(os.path.join(SAIDA, "Icones"), exist_ok=True)
+    for nome in ICONES:
+        icone(nome).save(os.path.join(SAIDA, "Icones", nome + ".png"))
     print("sprites gerados em", SAIDA)
 
 
