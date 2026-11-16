@@ -10,6 +10,7 @@ Unity cada texel vale 3 unidades do canvas (PPU 33.333), a mesma densidade dos
 personagens com a Pixel Perfect Camera em 640x360.
 """
 
+import math
 import os
 import random
 
@@ -634,6 +635,57 @@ def icone(nome):
     return centralizar(contornar(centralizar(de_texto(desenho, cores), 18)), 16)
 
 
+def coroa():
+    """Coroa do vencedor no painel de Resultado, 16x16, ouro com gemas."""
+    d = [
+        "w.....w.....w.",
+        "Ow...OwO...wO.",
+        "OOo..OOO..oOO.",
+        "OOOo.OOO.oOOO.",
+        "OOOOoOOOoOOOO.",
+        "OOOOOOOOOOOOO.",
+        "OrOOOgOgOOOrO.",
+        "OROOOGOGOOORO.",
+        "OOOOOOOOOOOOO.",
+        "DDDDDDDDDDDDD.",
+    ]
+    cores = {"w": OURO_BRILHO, "O": OURO, "o": BRONZE_CLARO, "D": BRONZE,
+             "r": BRASA_CLARA, "R": BRASA, "g": AGUA_CLARA, "G": AGUA}
+    return centralizar(contornar(centralizar(de_texto(d, cores), 18)), 16)
+
+
+def pena():
+    """Pena de escrever do botao do Registro, 16x16, na diagonal."""
+    img = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+    for y in range(16):
+        for x in range(16):
+            ao_longo = x - y          # -14 na ponta (0,14) ate +12 no topo (13,1)
+            lado = x + y - 14         # negativo: lado de cima, onde bate a luz
+            if ao_longo < -14 or ao_longo > 12:
+                continue
+            cor = None
+            if ao_longo >= -6:
+                s = math.sin(math.pi * (ao_longo + 6) / 19)
+                larg_cima = 4.6 * s
+                larg_baixo = 3.0 * s
+                if lado == 0:
+                    cor = "#a08a6c"  # raque
+                elif -larg_cima <= lado < 0:
+                    # entalhes nas barbas a cada 4 passos
+                    borda = lado <= -math.floor(larg_cima)
+                    if borda and ao_longo % 4 == 1:
+                        continue
+                    cor = "#f6ead0" if lado >= -1 else ("#e4d4b0" if not borda else "#ccc0a0")
+                elif 0 < lado <= larg_baixo:
+                    cor = "#b8a888" if lado == 1 else "#8e7c62"
+            elif lado == 0:
+                # cano da pena e ponta molhada de tinta
+                cor = "#ccc0a0" if ao_longo >= -9 else ("#2a2c3a" if ao_longo >= -12 else AGUA_SOMBRA)
+            if cor:
+                img.putpixel((x, y), rgba(cor))
+    return centralizar(contornar(centralizar(img, 18)), 16)
+
+
 def main():
     os.makedirs(SAIDA, exist_ok=True)
     for nome, estilo in ESTILOS.items():
@@ -651,6 +703,8 @@ def main():
     os.makedirs(os.path.join(SAIDA, "Icones"), exist_ok=True)
     for nome in ICONES:
         icone(nome).save(os.path.join(SAIDA, "Icones", nome + ".png"))
+    coroa().save(os.path.join(SAIDA, "Coroa.png"))
+    pena().save(os.path.join(SAIDA, "Pena.png"))
     print("sprites gerados em", SAIDA)
 
 
