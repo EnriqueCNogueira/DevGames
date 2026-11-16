@@ -21,6 +21,9 @@ public class Batalha
     // mensagens da luta, para mostrar na tela
     public List<string> Registro = new List<string>();
 
+    // o ultimo golpe que acertou (dano, efetividade, se derrubou o alvo)
+    public ResultadoAtaque UltimoAtaque { get; private set; }
+
     bool[] jaAgiu = new bool[2];
 
     public bool Terminou
@@ -64,10 +67,21 @@ public class Batalha
             return false;
 
         int dano = CalculadoraDano.Calcular(atacante.Ativo.Dados, defensor.Ativo.Dados, golpe);
+        int saldo = Efetividade.Saldo(atacante.Ativo.Dados, defensor.Ativo.Dados);
         defensor.Ativo.ReceberDano(dano);
 
+        string aviso = Efetividade.Rotulo(saldo);
         Registro.Add(atacante.Ativo.Dados.nome + " usou " + atacante.Ativo.Dados.NomeDoGolpe(golpe)
-            + " e causou " + dano + " de dano.");
+            + " e causou " + dano + " de dano." + (aviso != null ? " " + aviso : ""));
+
+        UltimoAtaque = new ResultadoAtaque
+        {
+            Atacante = JogadorDaVez,
+            Golpe = golpe,
+            Dano = dano,
+            Saldo = saldo,
+            Derrotou = !defensor.Ativo.EstaVivo,
+        };
 
         // usar o especial esvazia a barra
         if (golpe == TipoGolpe.Especial)
