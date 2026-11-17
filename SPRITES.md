@@ -4,7 +4,7 @@ Pixel art medieval, vista lateral, olhando para a direita (o oponente usa o mesm
 
 ![Elenco completo](arte/personagens/elenco.png)
 
-O elenco inteiro foi refeito (v2), com as cinco animações de cada personagem. Os prompts de cada personagem, gerados pela skill `/prompt-sprite`, estão em `ferramentas/sprites/prompts/`.
+O elenco inteiro foi refeito (v2), com as cinco animações de cada personagem.
 
 | Personagem | Parado | Ataque | Especial | Dano | Derrota |
 | --- | --- | --- | --- | --- | --- |
@@ -52,8 +52,6 @@ Quadros por animação: Parado 6 (6 fps, em loop), Ataque 6 (10 fps), Especial 8
   - **Ataque (Muralha de Troncos):** crava o escudo e troncos com cintas de ferro brotam à frente.
   - **Especial (Absorção Vital):** puxa partículas de vida para o tronco.
 
-## Como gerar
+## Como importar na Unity
 
-- Um personagem: `python ferramentas/sprites/build.py <modulo>` (ex.: `guerreiro_fogo`).
-- Elenco: `python ferramentas/sprites/elenco.py`.
-- Na Unity, importe com PPU 96, Filter Mode Point, sem compressão e sem mipmaps, usando o pivô do `_sheet.json`. Cada sheet tem uma linha por animação, na ordem do JSON.
+- Importe com PPU 96, Filter Mode Point, sem compressão e sem mipmaps, usando o pivô do `_sheet.json`. Cada sheet tem uma linha por animação, na ordem do JSON.
