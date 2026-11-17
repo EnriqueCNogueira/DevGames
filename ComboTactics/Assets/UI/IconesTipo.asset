@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64cab6cd657b5546a7d9a10403276f4, type: 3}
+  m_Name: IconesTipo
+  m_EditorClassIdentifier: ComboTactics::IconesTipo
+  fogo: {fileID: 21300000, guid: 019da8795125226499e3dc7f42a5b8f4, type: 3}
+  agua: {fileID: 21300000, guid: d96058013bc351545957efe249dbd66d, type: 3}
+  planta: {fileID: 21300000, guid: 7f321319523c80341b0f0d383d7455ad, type: 3}
+  guerreiro: {fileID: 21300000, guid: 021b25bfcf8557f4086a2df6e7d90adf, type: 3}
+  mago: {fileID: 21300000, guid: ad5b34fd1236763408e6ae99048c6532, type: 3}
+  tanque: {fileID: 21300000, guid: 91189c24e085f9a4389979e6f867eee1, type: 3}
