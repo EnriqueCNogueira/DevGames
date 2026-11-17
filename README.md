@@ -15,6 +15,49 @@ Jogo feito para a disciplina de Desenvolvimento de Games da UNIFESP.
 2. No Hub, clique em *Add project from disk* e escolha a pasta `ComboTactics`.
 3. A primeira abertura demora um pouco porque o Unity monta a pasta `Library`.
 
+## Build WebGL
+
+O jogo roda no navegador, em 1280x720. O build sai em `ComboTactics/Builds/WebGL` (pasta fora do git).
+
+- **Pelo Editor**: menu *Combo Tactics > Build WebGL*.
+- **Pela linha de comando** (com o Editor fechado):
+
+```bash
+unity build ComboTactics --target WebGL --execute-method ConstruirWebGL.Construir
+```
+
+O build usa compressão Gzip com *Decompression Fallback*: o próprio loader descompacta os arquivos, porque o GitHub Pages não envia o header `Content-Encoding`. Para testar localmente, sirva a pasta por HTTP (abrir o `index.html` direto do disco não funciona):
+
+```bash
+python -m http.server 8000 --directory ComboTactics/Builds/WebGL
+```
+
+E abra `http://localhost:8000`.
+
+## Publicação no GitHub Pages
+
+A publicação é manual, numa branch `gh-pages` separada do código (sem histórico em comum, para o build não pesar na `main`). Na raiz do repositório:
+
+1. Na primeira vez, crie a branch órfã numa pasta ao lado:
+
+```bash
+git worktree add --orphan -b gh-pages ../DevGames-pages
+```
+
+2. A cada publicação, copie o build, commite e envie:
+
+```bash
+rm -rf ../DevGames-pages/* && cp -r ComboTactics/Builds/WebGL/. ../DevGames-pages/ && touch ../DevGames-pages/.nojekyll
+```
+
+```bash
+git -C ../DevGames-pages add -A && git -C ../DevGames-pages commit -m "build: publica a versao WebGL" && git -C ../DevGames-pages push -u origin gh-pages
+```
+
+3. Só na primeira vez: no GitHub, em *Settings > Pages*, escolha *Deploy from a branch*, branch `gh-pages`, pasta `/ (root)`.
+
+O jogo fica em `https://enriquecnogueira.github.io/DevGames/`.
+
 ## Pastas
 
 - `ComboTactics/` - projeto do Unity
@@ -27,4 +70,4 @@ Jogo feito para a disciplina de Desenvolvimento de Games da UNIFESP.
 
 ## Situação
 
-Em desenvolvimento. A primeira parte é o sistema de batalha (golpes, troca de personagem e vantagens de elemento e classe).
+Em desenvolvimento. O Sprint 1 entrega o jogo jogável do início ao fim em PvP local: menu, seleção das duas equipes, batalha 3x3 (golpes, troca de personagem e vantagens de elemento e classe) e tela de resultado com revanche.
