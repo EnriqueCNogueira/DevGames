@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d72592a0e569248b1c30c71796b77c, type: 3}
+  m_Name: TanquePlanta
+  m_EditorClassIdentifier: ComboTactics::DadosPersonagem
+  nome: "\xC1rvore guerreira"
+  classe: 2
+  elemento: 2
+  vida: 880
+  ataque: 63
+  defesa: 95
+  velocidade: 23
+  golpeBasico: Muralha de Troncos
+  tecnica: Casca Grossa
+  especial: "Absor\xE7\xE3o Vital"
+  spritesParado:
+  - {fileID: 6792876099040896268, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: -2189339371528521722, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: -7400525182820460020, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: -8524083681343265515, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 3523677368994269515, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: -1337525492213650643, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  spritesAtaque:
+  - {fileID: 7550052555703350380, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: -2671013119479467731, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 5311291053484508907, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 1727053212454261293, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 1274605118728950253, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: -2770982370629006145, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  spritesDano:
+  - {fileID: 5834030305398076817, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 6655728617377464930, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 7597476518994293618, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  spritesDerrota:
+  - {fileID: 8710288926398571786, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 8470534012805467810, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: -857991603033837286, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: -8483986491889172205, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 8083585317376635894, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 6964885784485257086, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  spritesEspecial:
+  - {fileID: -6724703041337843084, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 3244785322147024245, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: -8175637114765905329, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: -1440191862238630673, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: -1719405061663351857, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 4776109158224319996, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 987469342167552182, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}
+  - {fileID: 4843705169488054523, guid: ebaab901fc2729c47b61ac858ebc91e2, type: 3}

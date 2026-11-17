@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d72592a0e569248b1c30c71796b77c, type: 3}
+  m_Name: GuerreiroPlanta
+  m_EditorClassIdentifier: ComboTactics::DadosPersonagem
+  nome: Curupira
+  classe: 0
+  elemento: 2
+  vida: 620
+  ataque: 112
+  defesa: 65
+  velocidade: 73
+  golpeBasico: "Esmagamento com Ra\xEDzes"
+  tecnica: Escudo de Madeira
+  especial: Golpe Espinhoso
+  spritesParado:
+  - {fileID: -8561805543627410167, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -5423225340488212630, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: 5279448163142742987, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -4806012088918522195, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: 5802112950770790026, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -4207165578017936215, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  spritesAtaque:
+  - {fileID: -2360805390883308012, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -3235643221928972272, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -2237707394734922776, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: 3786171467384786353, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -8827210984537086151, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: 929471676538090016, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  spritesDano:
+  - {fileID: 1073106379187507356, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: 9081845264902046618, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -9054669290453316522, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  spritesDerrota:
+  - {fileID: -2243059991822355285, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -1493771109638905731, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: 6621672671009586224, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -7500294461670038509, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -4118443646399833272, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: 7105058016838298904, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  spritesEspecial:
+  - {fileID: -128686881130652551, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -4995465593602882391, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: 2092294343670169815, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -7812706684942227868, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: 7442701599934417405, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: 8523768185631666122, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: 6357241542635007559, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}
+  - {fileID: -2179211847642766669, guid: 4b3c8154727c3ab4eb51608c24144915, type: 3}

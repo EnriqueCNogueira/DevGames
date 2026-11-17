@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d72592a0e569248b1c30c71796b77c, type: 3}
+  m_Name: MagoFogo
+  m_EditorClassIdentifier: ComboTactics::DadosPersonagem
+  nome: "F\xEAnix"
+  classe: 1
+  elemento: 0
+  vida: 560
+  ataque: 171
+  defesa: 15
+  velocidade: 52
+  golpeBasico: Bola de Fogo
+  tecnica: Chuva de Meteoros
+  especial: "Explos\xE3o Solar"
+  spritesParado:
+  - {fileID: -6691641518258726303, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -703381686695380703, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -3978246549440399411, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -2801218041761362510, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 6512638895860929439, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 95163010923671816, guid: b0134d109b52749459440e13721f1719, type: 3}
+  spritesAtaque:
+  - {fileID: -7325063862733451548, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 2300826913057802558, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 2943823956902921075, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -6502077653081329993, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 7158480886786385490, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -3123712909481316281, guid: b0134d109b52749459440e13721f1719, type: 3}
+  spritesDano:
+  - {fileID: -8999635913540328148, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 2414136913678177432, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 999285163738507432, guid: b0134d109b52749459440e13721f1719, type: 3}
+  spritesDerrota:
+  - {fileID: -8270255888055236459, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 6188479432105884004, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 4338310874934735462, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 5981445965124400849, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 9151962008038141994, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 6735851429148378483, guid: b0134d109b52749459440e13721f1719, type: 3}
+  spritesEspecial:
+  - {fileID: 1789620598606761870, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 525583092710903729, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -7062190742879181571, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -7538835003425929131, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -6060479300365533105, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 7929261016474051581, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: -9212522684847881971, guid: b0134d109b52749459440e13721f1719, type: 3}
+  - {fileID: 6603568549071280146, guid: b0134d109b52749459440e13721f1719, type: 3}
