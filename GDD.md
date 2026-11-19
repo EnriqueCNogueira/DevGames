@@ -1,83 +1,72 @@
-# Game Design Document
+# Game Design Document — Combo Tactics
 
-## 1. Visão Geral do Jogo
+## 1. Visão geral
 
-- **Título:** Combo Tactics
-- **Gênero e Sistema:** RPG de turno focado em gerenciamento de esquadrão e combate tático 1v1 alternado.
-- **Público-Alvo:** Fãs de RPG tático (+14 anos), entusiastas de otimização de builds e jogadores de PvP competitivo.
-- **Classificação Indicativa:** 14 anos.
-- **Modos de Jogo:** Multiplayer, Singleplayer, Player versus Player (PvP), Player vs IA.
-- **Temática Central:** Um torneio de arena/clube da luta onde o jogador gerencia e reveza uma equipe de três lutadores em combates de alto risco.
-- **Diferenciais:** Habilidades combinatórias de classe e sistema de apostas/gambling.
-- **Referências e Competidores:** Persona, Pokémon, Baldur's Gate, Expedition 33.
+- **Gênero:** RPG tático por turnos, com gerenciamento de equipe e duelos 1v1 alternados.
+- **Plataforma:** Navegador em PC, sem instalação; requer internet.
+- **Público-alvo:** Fãs de RPG tático, otimização de equipes e batalhas competitivas.
+- **Classificação indicativa:** 14 anos.
+- **Modelo de negócio:** Gratuito, com pacotes opcionais de moedas; ver seção 10.
+- **Fantasia do jogador:** Um novo duelista monta uma equipe de três lutadores e enfrenta desafios para alcançar a glória.
+- **Pilares de experiência:**
+  1. Montar uma equipe e explorar combinações de classe e elemento.
+  2. Tomar decisões táticas em batalhas curtas de equipes 3 contra 3, com apenas um lutador ativo de cada lado.
+  3. Reagir no momento certo e adaptar-se às mudanças de arena.
 
-## 2. Resumo da Jogabilidade
+## 2. Modos de jogo e fluxo
 
-- **Estrutura de Equipe:** O jogador escolhe e gerencia uma equipe de 3 personagens de diferentes classes e elementos.
-- **Menu Fora de Combate:** Permite a evolução de atributos dos personagens e a escolha da equipe.
-- **Dinâmica de Combate:** Duelos 1v1 por turnos.
-- **Ações por Turno:** O jogador pode escolher entre três ações:
-  1. Usar um ataque/habilidade.
-  2. Usar um item.
-  3. Trocar o personagem ativo na arena.
-- **Condição de Vitória:** A equipe que derrotar todos os integrantes do time adversário e sobreviver vence.
+### 2.1 Modos
 
-## 3. Efetividade e Dano
+- **História:** Campanha de quatro batalhas em sequência: três guardiões elementais e o confronto final contra o antigo guardião. Os adversários são liberados ao vencer a etapa anterior.
+- **PvP local:** Dois jogadores disputam uma batalha no mesmo aparelho e revezam os turnos. A equipe, a arena e seus efeitos são compartilhados na mesma tela.
+- **Contra a IA:** Batalhas fora da campanha contra a IA, com escolha de dificuldade.
+- **Torneio PvP:** O caderno associa uma recompensa de 500 moedas à vitória no torneio. A estrutura do torneio ainda precisa ser definida.
 
-### 3.1 Efetividade entre Elementos
+### 2.2 Fluxo principal
 
-Ciclo de vantagem: **Fogo → Planta → Água → Fogo**.
+1. No menu, escolher História, Multiplayer ou Loja.
+2. Selecionar uma equipe de três personagens e os itens para a batalha.
+3. Na História, escolher a fase disponível; nos outros modos, escolher o oponente ou a dificuldade.
+4. Lutar usando ataques, itens, troca de personagem e ações defensivas por tempo.
+5. Ao fim da batalha, receber moedas e retornar ao menu.
 
-| Elemento | É forte contra | É fraco contra |
+O fluxo segue o diagrama: **Menu → Selecionar equipe e itens → Escolher fase → Ações de batalha → Estratégias de batalha → Derrotar o oponente**.
+
+## 3. História e mundo
+
+### 3.1 Premissa
+
+Fogo, Água e Planta eram mantidos em equilíbrio pelo Cristal Elemental, protegido no Santuário da Origem. O antigo guardião do santuário, acreditando que o cristal limitava o potencial dos elementos, tentou concentrar seu poder em si. A tentativa partiu o cristal em três fragmentos e provocou um desequilíbrio que ameaça o mundo.
+
+Os fragmentos foram parar em regiões distintas, sob a guarda de três elementais. A energia dos fragmentos ampliou seus poderes e distorceu suas personalidades; convencidos de que protegem o mundo, eles impedem que qualquer pessoa se aproxime.
+
+Um novo duelista parte para recuperar os fragmentos. Ao longo da jornada, descobre a história do cristal e as motivações do antigo guardião. Depois de reunir os três fragmentos, segue para a Fortaleza, construída sobre as ruínas do santuário. O guardião oferece ao duelista a chance de se unir a ele; após a recusa, uma batalha final decide o destino das forças elementais. O objetivo é devolver o cristal ao santuário e restabelecer o equilíbrio, embora as marcas da ruptura permaneçam.
+
+### 3.2 Estrutura da campanha
+
+| Etapa | Desafio | Objetivo narrativo |
 | --- | --- | --- |
-| Fogo | Planta | Água |
-| Planta | Água | Fogo |
-| Água | Fogo | Planta |
+| 1–3 | Um guardião de cada elemento | Recuperar os três fragmentos e atravessar as regiões afetadas |
+| 4 | Antigo guardião, na Fortaleza | Recuperar o cristal e restaurar o equilíbrio |
 
-### 3.2 Efetividade entre Classes
+Cada um dos três primeiros adversários está associado a um ambiente exclusivo. A ambientação da fase deve refletir sua região; durante o combate, o sorteio de arena descrito na seção 5.7 pode alterar temporariamente o ambiente ativo.
 
-Ciclo de vantagem: **Guerreiro → Mago → Tanque → Guerreiro**.
+O caderno descreve os três primeiros adversários como equipes de um único elemento e o chefe final como um duelista veterano com um personagem exclusivo e mais forte. A composição exata das equipes dos guardiões e os detalhes da batalha final devem permanecer consistentes com essa proposta.
 
-| Classe | É forte contra | É fraco contra |
-| --- | --- | --- |
-| Guerreiro | Mago | Tanque |
-| Mago | Tanque | Guerreiro |
-| Tanque | Guerreiro | Mago |
+Os rivais são competidores, não necessariamente vilões. A ameaça central da campanha é o desequilíbrio causado pela ruptura do cristal e a decisão do antigo guardião.
 
-### 3.3 Como o Dano é Calculado
+### 3.3 Duelista do jogador
 
-**Velocidade:** A Velocidade não entra na conta, ela só decide quem age primeiro no turno.
+O protagonista é um novato desconhecido que entra nos desafios por vontade própria. Ele representa o jogador, não é uma unidade controlável em combate e não aparece na arte do jogo.
 
-**Ataque:** Valor proporcional ao dano aplicado.
+## 4. Personagens
 
-**Defesa:** Cada ponto de Defesa corta 0,5% do dano recebido. Como a Defesa vai até 100, o corte máximo é de 50%.
-
-| Defesa | Dano recebido |
-| --- | --- |
-| 20 | −10% |
-| 50 | −25% |
-| 100 | −50% |
-
-**Efetividade:** É aplicada uma porcentagem no Ataque/Defesa.
-
-| Vantagens do personagem | Atacando | Defendendo |
-| --- | --- | --- |
-| Nenhuma | dano normal | dano normal |
-| Uma (elemento **ou** classe) | +30% de dano causado | −30% de dano recebido |
-| Duas (elemento **e** classe) | +50% de dano causado | −50% de dano recebido |
-
-Exemplo: um Mago de Fogo contra um Tanque de Planta tem vantagem de classe (Mago → Tanque) e de elemento (Fogo → Planta). Nesse confronto ele causa +50% de dano e recebe −50% de dano.
-
-## 4. Personagens e Status Base
-
-Os valores abaixo foram equilibrados por simulação: os nove personagens têm poder de combate equivalente, e o resultado de cada duelo é decidido pelas vantagens de elemento e classe da seção 3.3, não por atributos superiores.
-
-O nome de cada personagem é o mesmo exibido no jogo; a coluna Tipo é a combinação de classe e elemento.
+Há nove personagens jogáveis, cobrindo todas as combinações de três classes e três elementos. O jogador leva três para cada batalha. Os nove personagens estão disponíveis desde o início; a progressão da campanha libera adversários, não personagens jogáveis.
 
 ### 4.1 Guerreiros
 
 | Personagem | Tipo | HP | Ataque | Defesa | Velocidade | Habilidades |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
 | Mula sem cabeça | Guerreiro de Fogo | 620 | 130 | 45 | 77 | Corte Flamejante, Investida Vulcânica, Brado de Calor |
 | Tubarão | Guerreiro de Água | 620 | 119 | 55 | 90 | Lâmina de Correnteza, Impacto Geiser, Defesa Fluida |
 | Curupira | Guerreiro de Planta | 620 | 112 | 65 | 73 | Esmagamento com Raízes, Escudo de Madeira, Golpe Espinhoso |
@@ -85,7 +74,7 @@ O nome de cada personagem é o mesmo exibido no jogo; a coluna Tipo é a combina
 ### 4.2 Magos
 
 | Personagem | Tipo | HP | Ataque | Defesa | Velocidade | Habilidades |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
 | Fênix | Mago de Fogo | 560 | 171 | 15 | 52 | Bola de Fogo, Explosão Solar, Chuva de Meteoros |
 | Sapo Feiticeiro | Mago de Água | 560 | 160 | 25 | 65 | Jato de Pressão, Prisão Gélida, Nevasca |
 | Cogumelo | Mago de Planta | 560 | 153 | 35 | 48 | Chicote de Vinhas, Esporos Tóxicos, Rajada de Folhas Cortantes |
@@ -93,44 +82,76 @@ O nome de cada personagem é o mesmo exibido no jogo; a coluna Tipo é a combina
 ### 4.3 Tanques
 
 | Personagem | Tipo | HP | Ataque | Defesa | Velocidade | Habilidades |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
 | Dragão | Tanque de Fogo | 880 | 73 | 75 | 27 | Escudo de Magma, Provocação Ardente, Impacto de Cinzas |
 | Poseidon | Tanque de Água | 880 | 68 | 85 | 40 | Barreira Hidráulica, Carapaça de Gelo, Maremoto Punitivo |
 | Árvore guerreira | Tanque de Planta | 880 | 63 | 95 | 23 | Muralha de Troncos, Absorção Vital, Casca Grossa |
 
-## 5. Mecânicas
+Os valores são atributos-base. O equilíbrio comparativo entre personagens ainda deve ser validado em testes; os atributos diferentes não permitem concluir, por si só, que os confrontos são equivalentes.
 
-### 5.1 Loja
+## 5. Batalha e regras
 
-A loja fica disponível no menu fora de combate e é onde o jogador gasta as moedas que acumula nas batalhas (100 por vitória) para comprar itens e evoluir os personagens. 
-- Os itens são consumíveis usados como uma das três ações do turno, e o catálogo é Kit Médico, Remédio (contra efeitos negativos), Poção de Ataque e Defesa (+10%).
-- A evolução é individual por personagem e soma 3% ao valor base de HP, Ataque, Defesa ou Velocidade, com no máximo 5 evoluções por atributo (teto de +15%).
+### 5.1 Equipes, turnos e vitória
 
-### 5.2 Efeitos Positivos e Negativos
+- Cada lado leva três personagens e mantém um lutador ativo na arena por vez.
+- A batalha é composta por duelos 1v1 alternados. Vence quem derrotar todos os personagens da equipe adversária.
+- Em seu turno, o jogador escolhe uma ação: atacar, usar um item ou trocar o personagem ativo.
+- Cada personagem tem três ataques: dois disponíveis normalmente e um ataque especial, liberado com a barra de stamina cheia.
+- A Velocidade determina quem age primeiro no turno; ela não entra diretamente no cálculo de dano.
 
-Os efeitos são aplicados por ataques especiais e duram por 3 turnos. 
-- Efeitos negativos incluem Chamas, Afogamento e Veneno, que causam dano contínuo ao fim de cada turno, e podem ser removidos com remédios.
-- Efeitos positivos incluem regeneração, que devolve HP a cada turno, e aumentos temporários de atributo. 
+### 5.2 Vantagens de elemento e classe
 
-> Os efeitos acompanham o personagem mesmo quando ele está fora de batalha.
+Os dois ciclos de vantagem são:
 
-### 5.3 Stamina
+| Categoria | Ciclo |
+| --- | --- |
+| Elementos | Fogo → Planta → Água → Fogo |
+| Classes | Guerreiro → Mago → Tanque → Guerreiro |
 
-Cada jogador tem uma barra de stamina que, quando cheia, libera o ataque especial. A barra carrega ao causar dano, ao sofrer dano e ao defender com sucesso.
+| Elemento | Forte contra | Fraco contra |
+| --- | --- | --- |
+| Fogo | Planta | Água |
+| Planta | Água | Fogo |
+| Água | Fogo | Planta |
 
-### 5.4 Ataque Especial
+| Classe | Forte contra | Fraco contra |
+| --- | --- | --- |
+| Guerreiro | Mago | Tanque |
+| Mago | Tanque | Guerreiro |
+| Tanque | Guerreiro | Mago |
 
-Cada personagem tem três ataques: dois sempre disponíveis, e o especial, mais forte, que exige a barra de stamina cheia.
+A vantagem de elemento e a de classe podem se acumular. A regra documentada atribui +30% de dano a uma vantagem e +50% a duas. Também associa uma vantagem a −30% de dano recebido e duas a −50%.
 
-### 5.5 Desvio e Contra-ataque
+### 5.3 Atributos e cálculo de dano
 
-Quando o personagem do jogador é alvo de um ataque, abre-se uma janela de tempo em que ele pode clicar no momento certo para se defender. Acertar a janela resulta em desvio (dano anulado) ou contra-ataque (davolve o ataque recebido).
+- **Ataque:** determina o dano causado; a fórmula completa não está especificada.
+- **Defesa:** cada ponto reduz em 0,5% o dano recebido, até o máximo de 50% com Defesa 100.
+- **Velocidade:** define a ordem de ação, sem alterar o dano.
 
-### 5.6 Efeitos de Rodadas
+| Defesa | Redução de dano |
+| ---: | ---: |
+| 20 | 10% |
+| 50 | 25% |
+| 100 | 50% |
 
-A cada 3 rodadas, um sorteio no estilo cassino altera o ambiente da arena, que passa a favorecer alguns personagens e prejudicar outros. O efeito do ambiente é aplicado apenas na rodada sorteada, com +-10% no dano.
+### 5.4 Stamina e ataque especial
 
-Ambientes e seus efeitos:
+Cada jogador tem uma barra de stamina. Ela carrega ao causar dano, sofrer dano e defender com sucesso. Quando cheia, permite usar o ataque especial do personagem ativo.
+
+### 5.5 Desvio e contra-ataque
+
+Ao ser alvo de um ataque, o jogador defensor recebe uma janela de tempo para clicar e tentar uma resposta. Um acerto resulta em desvio, que anula o dano, ou contra-ataque, que devolve o ataque recebido.
+
+### 5.6 Efeitos de status
+
+Ataques especiais podem aplicar efeitos positivos ou negativos a outros personagens. Os efeitos duram três turnos e acompanham o personagem mesmo quando ele sai da arena.
+
+- **Negativos:** Chamas, Afogamento e Veneno causam dano contínuo ao fim de cada turno e podem ser removidos com Remédio.
+- **Positivos:** regeneração restaura HP a cada turno; outros efeitos podem aumentar atributos temporariamente.
+
+### 5.7 Arena e mudança de ambiente
+
+A câmera observa uma arena 2D fixa. A cada três rodadas, um sorteio muda o ambiente; o efeito é aplicado apenas na rodada sorteada. O modificador documentado é de ±10% no dano.
 
 | Ambiente | Favorece | Prejudica |
 | --- | --- | --- |
@@ -138,3 +159,56 @@ Ambientes e seus efeitos:
 | Vulcão | Personagens de Fogo | Personagens de Planta |
 | Floresta | Personagens de Planta | Personagens de Água |
 | Lua | Personagens de baixa Velocidade | Personagens de alta Velocidade |
+
+## 6. Loja, itens e progressão
+
+### 6.1 Moedas e recompensas
+
+| Resultado | Recompensa |
+| --- | ---: |
+| Derrota | 50 moedas |
+| Vitória em batalha | 100 moedas |
+| Vitória no torneio | 500 moedas |
+
+As moedas podem ser gastas em itens e melhorias permanentes de atributos. A campanha libera a próxima etapa após a vitória na etapa atual.
+
+### 6.2 Itens
+
+Os itens são consumíveis e ocupam a ação do turno:
+
+| Item | Efeito documentado |
+| --- | --- |
+| Kit Médico | Recupera HP; quantidade a definir |
+| Remédio | Remove efeitos negativos |
+| Poção de Ataque | Aumenta Ataque; valor e duração a definir |
+| Poção de Defesa | Aumenta Defesa em 10%; duração a definir |
+
+### 6.3 Melhorias de atributos
+
+Na loja, o jogador pode evoluir individualmente HP, Ataque, Defesa ou Velocidade de cada personagem. Cada compra aumenta o atributo em 3% do valor-base; o limite é de cinco melhorias por atributo, ou +15%. As melhorias são permanentes.
+
+Os preços dos itens e das melhorias não estão definidos.
+
+## 7. Direção de arte, áudio e apresentação
+
+- **Arte:** estilo cartoon 2D estilizado para os nove lutadores e as arenas.
+- **Câmera:** lateral e fixa; aproxima o foco do personagem durante o ataque especial.
+- **Ambientes visuais:** Mar, Vulcão, Floresta e Lua.
+- **Música:** animada, leve e energética.
+- **Efeitos sonoros:** vozes e rugidos próprios para dar personalidade aos lutadores.
+- **Tom emocional:** competição eletrizante, vínculo com a equipe e sensação de risco criada pelo sorteio da arena. Horror e sobrevivência não fazem parte da proposta.
+
+## 8. Escopo e conteúdo
+
+- Não há exploração de mapa, fases bônus ou hazards; o dano vem das batalhas e dos efeitos de status.
+- Não há editor de personagens, arenas ou regras.
+- O personagem que representa o jogador não é controlado durante o combate.
+- Os nove lutadores jogáveis estão disponíveis desde o início; não são desbloqueados ao vencer adversários.
+
+## 9. Multiplayer e plataforma
+
+O PvP é local, para dois jogadores no mesmo aparelho. Não há divisão de tela: os jogadores revezam o dispositivo e compartilham a visualização da batalha. O jogo é pensado para navegador de PC, teclado e mouse, com conexão à internet.
+
+## 10. Modelo de negócio
+
+O jogo é gratuito no navegador, sem anúncios e sem cobrança para acessar a campanha, o multiplayer ou os nove personagens. Pacotes de moedas podem ser comprados para adquirir itens e melhorias mais rapidamente. Como melhorias de atributos e itens também afetam o combate, essa compra pode conceder vantagem indireta no PvP.
