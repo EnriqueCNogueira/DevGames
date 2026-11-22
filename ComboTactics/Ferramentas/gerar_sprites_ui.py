@@ -620,6 +620,89 @@ def icone_tanque():
     return d, {"g": BRONZE_CLARO, "d": BRONZE, "L": FERRO_LUZ, "w": ACO_BRILHO, "s": FERRO, "S": FERRO_ESCURO}
 
 
+OSSO = "#e8dcc4"
+OSSO_SOMBRA = "#a89a84"
+OSSO_BRILHO = "#f6ead0"
+
+
+def icone_moeda():
+    """Moeda de ouro com aro gravado, da loja e das recompensas."""
+    d = [
+        "...DDDDDD...",
+        "..DOOOOOOD..",
+        ".DOwwOOOOOd.",
+        "DOwOOoooOOOd",
+        "DOwOoOOOoOOd",
+        "DOOOoOOOoOOd",
+        "DOOOoOOOoOOd",
+        "DOOOOoooOOOd",
+        ".DOOOOOOOOd.",
+        "..dOOOOOOd..",
+        "...dddddd...",
+    ]
+    return d, {"w": OURO_BRILHO, "O": OURO, "o": BRONZE, "D": BRONZE_CLARO, "d": BRONZE}
+
+
+def icone_kit_medico():
+    """Caixa de osso com cruz vermelha e alca de bronze."""
+    d = [
+        "....dddd....",
+        "...d....d...",
+        "LLLLLLLLLLLL",
+        "LwwwwrrwwwwS",
+        "LwwwwrrwwwwS",
+        "LwwrrrrrrwwS",
+        "LwwRRRRRRwwS",
+        "LwwwwrRwwwwS",
+        "LwwwwrRwwwwS",
+        "SSSSSSSSSSSS",
+    ]
+    return d, {"d": BRONZE, "L": OSSO_BRILHO, "w": OSSO, "S": OSSO_SOMBRA, "r": BRASA_CLARA, "R": BRASA}
+
+
+def frasco(liquido, sombra, brilho):
+    d = [
+        "....kkkk....",
+        "....KKKK....",
+        ".....gg.....",
+        ".....gg.....",
+        "....gCCg....",
+        "...gCwCCg...",
+        "..gCwCCCCg..",
+        "..gCCCCCCg..",
+        "..gCCCCCCg..",
+        "..gcCCCCcg..",
+        "...gccccg...",
+        "....gggg....",
+    ]
+    return d, {"k": BRONZE_CLARO, "K": BRONZE, "g": FERRO_LUZ, "C": liquido, "c": sombra, "w": brilho}
+
+
+def icone_pocao_ataque():
+    return frasco(BRASA, BRASA_ESCURA, BRASA_BRILHO)
+
+
+def icone_pocao_defesa():
+    return frasco(AGUA_CLARA, AGUA_SOMBRA, AGUA_BRILHO)
+
+
+def icone_remedio():
+    """Capsula na diagonal, metade folha e metade osso."""
+    d = [
+        ".......GGG..",
+        "......GgggG.",
+        ".....GgyggG.",
+        "....GgggggG.",
+        "...wwgggGG..",
+        "..wWWwgG....",
+        ".wWWWWw.....",
+        ".wWWWWw.....",
+        ".wWWWw......",
+        "..www.......",
+    ]
+    return d, {"G": FOLHA_ESCURA, "g": FOLHA, "y": FOLHA_BRILHO, "w": OSSO_SOMBRA, "W": OSSO}
+
+
 ICONES = {
     "Icone_Fogo": icone_fogo,
     "Icone_Agua": icone_agua,
@@ -627,6 +710,11 @@ ICONES = {
     "Icone_Guerreiro": icone_guerreiro,
     "Icone_Mago": icone_mago,
     "Icone_Tanque": icone_tanque,
+    "Icone_Moeda": icone_moeda,
+    "Icone_KitMedico": icone_kit_medico,
+    "Icone_PocaoAtaque": icone_pocao_ataque,
+    "Icone_PocaoDefesa": icone_pocao_defesa,
+    "Icone_Remedio": icone_remedio,
 }
 
 
