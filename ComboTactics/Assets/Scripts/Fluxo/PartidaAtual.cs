@@ -13,6 +13,7 @@ public static class PartidaAtual
 
     static DadosPersonagem[] equipe1;
     static DadosPersonagem[] equipe2;
+    static Mochila[] mochilas = new Mochila[2];
 
     // true quando a Selecao ja guardou as duas equipes
     public static bool TemEquipes
@@ -37,10 +38,25 @@ public static class PartidaAtual
         equipe2 = (DadosPersonagem[])jogador2.Clone();
     }
 
+    // itens que o jogador separou na Selecao (vazia se nao separou nada); devolve copia
+    public static Mochila MochilaDe(int jogador)
+    {
+        Mochila m = mochilas[jogador];
+        return m != null ? m.Copia() : new Mochila();
+    }
+
+    public static void GuardarMochilas(Mochila jogador1, Mochila jogador2)
+    {
+        mochilas[0] = jogador1 != null ? jogador1.Copia() : null;
+        mochilas[1] = jogador2 != null ? jogador2.Copia() : null;
+    }
+
     public static void Limpar()
     {
         equipe1 = null;
         equipe2 = null;
+        mochilas[0] = null;
+        mochilas[1] = null;
     }
 
     static void Validar(DadosPersonagem[] equipe, string nome)
