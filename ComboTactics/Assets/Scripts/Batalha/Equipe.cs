@@ -20,10 +20,23 @@ public class Equipe
         get { return Stamina >= STAMINA_MAXIMA; }
     }
 
-    public Equipe(params DadosPersonagem[] personagens)
+    // itens que o jogador trouxe da Selecao (vazia se nao trouxe nada)
+    public Mochila Mochila { get; private set; }
+
+    // com os atributos base, sem itens
+    public Equipe(params DadosPersonagem[] personagens) : this(personagens, null, null)
+    {
+    }
+
+    // perfil: aplica as evolucoes compradas (null = atributos base)
+    public Equipe(DadosPersonagem[] personagens, Perfil perfil, Mochila mochila)
     {
         foreach (DadosPersonagem p in personagens)
-            Lutadores.Add(new Lutador(p));
+        {
+            Atributos atributos = perfil != null ? perfil.AtributosDe(p) : Atributos.Base(p);
+            Lutadores.Add(new Lutador(p, atributos));
+        }
+        Mochila = mochila != null ? mochila.Copia() : new Mochila();
     }
 
     public bool TemAlguemVivo()
