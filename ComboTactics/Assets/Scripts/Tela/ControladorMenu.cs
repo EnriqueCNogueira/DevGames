@@ -1,14 +1,15 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-// Tela inicial. So o PvP funciona no Sprint 1; Historia e Loja aparecem
-// desabilitados ate os Sprints 5 e 2.
+// Tela inicial. PvP e Loja funcionam; Historia aparece desabilitada ate o Sprint 5.
 public class ControladorMenu : MonoBehaviour
 {
     public Button botaoPvP;
     public Button botaoHistoria;
     public Button botaoLoja;
+    public TMP_Text textoSaldo;
 
     void Awake()
     {
@@ -19,8 +20,9 @@ public class ControladorMenu : MonoBehaviour
     void Start()
     {
         botaoPvP.onClick.AddListener(AbrirSelecao);
+        botaoLoja.onClick.AddListener(() => SceneManager.LoadScene(Cenas.LOJA));
         botaoHistoria.interactable = false;
-        botaoLoja.interactable = false;
+        textoSaldo.text = PerfilSalvo.Atual.moedas.ToString();
     }
 
     void AbrirSelecao()
