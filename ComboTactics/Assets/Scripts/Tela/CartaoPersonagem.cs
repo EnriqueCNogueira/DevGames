@@ -24,6 +24,11 @@ public class CartaoPersonagem : MonoBehaviour
         retrato.Tocar(dados.spritesParado);
         iconeClasse.sprite = icones.DaClasse(dados.classe);
         iconeElemento.sprite = icones.DoElemento(dados.elemento);
+        MostrarBarras(proporcoes);
+    }
+
+    public void MostrarBarras(float[] proporcoes)
+    {
         for (int i = 0; i < barras.Length; i++)
             barras[i].fillAmount = proporcoes[i];
     }

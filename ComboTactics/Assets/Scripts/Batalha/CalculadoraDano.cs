@@ -45,12 +45,32 @@ public static class CalculadoraDano
         }
     }
 
+    // com os atributos base, sem evolucao nem pocao
     public static int Calcular(DadosPersonagem atacante, DadosPersonagem alvo, TipoGolpe golpe)
     {
-        float dano = atacante.ataque * Poder(golpe);
+        return Calcular(atacante, atacante.ataque, alvo, alvo.defesa, golpe, 1f);
+    }
+
+    // na batalha: atributos com as evolucoes e as pocoes ativas de cada lado
+    public static int Calcular(Lutador atacante, Lutador alvo, TipoGolpe golpe, int rodada)
+    {
+        float pocoes = 1f;
+        if (atacante.TemPocaoAtaque(rodada))
+            pocoes *= 1f + Itens.BONUS_POCAO;
+        if (alvo.TemPocaoDefesa(rodada))
+            pocoes *= 1f - Itens.BONUS_POCAO;
+
+        return Calcular(atacante.Dados, atacante.Atributos.ataque, alvo.Dados, alvo.Atributos.defesa, golpe, pocoes);
+    }
+
+    // multiplicador: pocoes (1 = nenhuma). Classe e elemento vem dos dados.
+    static int Calcular(DadosPersonagem atacante, int ataque, DadosPersonagem alvo, int defesa,
+        TipoGolpe golpe, float multiplicador)
+    {
+        float dano = ataque * Poder(golpe) * multiplicador;
 
         // cada ponto de defesa corta 0,5% do dano
-        dano *= 1f - 0.005f * alvo.defesa;
+        dano *= 1f - 0.005f * defesa;
 
         // vantagens do atacante aumentam o dano: +30% com uma, +50% com duas
         int vantagensAtacante = ContarVantagens(atacante, alvo);

@@ -30,12 +30,13 @@ public class CartaoTroca : MonoBehaviour
             textoNome.text = d.nome;
             iconeClasse.sprite = icones.DaClasse(d.classe);
             iconeElemento.sprite = icones.DoElemento(d.elemento);
-            int[] valores = { d.ataque, d.defesa, d.velocidade };
+            Atributos a = lutador.Atributos;
+            int[] valores = { a.ataque, a.defesa, a.velocidade };
             for (int i = 0; i < barrasAtributo.Length; i++)
                 barrasAtributo[i].fillAmount = maximos[i] > 0 ? (float)valores[i] / maximos[i] : 0f;
         }
 
-        float fracao = (float)lutador.VidaAtual / d.vida;
+        float fracao = (float)lutador.VidaAtual / lutador.VidaMaxima;
         barraVida.fillAmount = fracao;
         barraVida.color = PainelJogador.CorDaVida(fracao);
 
@@ -43,7 +44,7 @@ public class CartaoTroca : MonoBehaviour
         textoEstado.text = estado ?? "";
         if (imagemRetrato == null)
             imagemRetrato = retrato.GetComponent<Image>();
-        imagemRetrato.color =lutador.EstaVivo ? Color.white : new Color(0.35f, 0.35f, 0.4f, 0.8f);
+        imagemRetrato.color = lutador.EstaVivo ? Color.white : new Color(0.35f, 0.35f, 0.4f, 0.8f);
         botao.interactable = interagivel;
     }
 }

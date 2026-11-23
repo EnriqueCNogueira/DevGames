@@ -5,7 +5,7 @@ using UnityEngine;
 //
 // Como funciona uma rodada:
 // - o personagem ativo mais rapido age primeiro, depois o outro
-// - cada jogador ataca ou troca de personagem (trocar gasta a vez)
+// - cada jogador ataca, usa um item ou troca de personagem (item e troca gastam a vez)
 // - se um personagem cai, o dono escolhe quem entra (de graca) e, se ele ainda
 //   nao tinha agido, perde a vez naquela rodada
 public class Batalha
@@ -23,6 +23,9 @@ public class Batalha
 
     // o ultimo golpe que acertou (dano, efetividade, se derrubou o alvo)
     public ResultadoAtaque UltimoAtaque { get; private set; }
+
+    // o ultimo item usado (quem usou, qual, quanto curou)
+    public ResultadoItem UltimoItem { get; private set; }
 
     bool[] jaAgiu = new bool[2];
 
@@ -66,7 +69,7 @@ public class Batalha
         if (golpe == TipoGolpe.Especial && !atacante.EspecialDisponivel)
             return false;
 
-        int dano = CalculadoraDano.Calcular(atacante.Ativo.Dados, defensor.Ativo.Dados, golpe);
+        int dano = CalculadoraDano.Calcular(atacante.Ativo, defensor.Ativo, golpe, Rodada);
         int saldo = Efetividade.Saldo(atacante.Ativo.Dados, defensor.Ativo.Dados);
         defensor.Ativo.ReceberDano(dano);
 
@@ -104,6 +107,47 @@ public class Batalha
             // quem caiu perde a vez nesta rodada
             jaAgiu[Outro(JogadorDaVez)] = true;
         }
+
+        FimDaAcao();
+        return true;
+    }
+
+    // pode usar o item agora? (o Kit Medico nao serve com a vida cheia)
+    public bool PodeUsarItem(TipoItem tipo)
+    {
+        if (!PodeAgir() || !Itens.Disponivel(tipo))
+            return false;
+
+        Equipe equipe = Equipes[JogadorDaVez];
+        if (!equipe.Mochila.Tem(tipo))
+            return false;
+        return tipo != TipoItem.KitMedico || !equipe.Ativo.VidaCheia;
+    }
+
+    // usar um item gasta a vez e nao carrega a stamina
+    public bool UsarItem(TipoItem tipo)
+    {
+        if (!PodeUsarItem(tipo))
+            return false;
+
+        Equipe equipe = Equipes[JogadorDaVez];
+        Lutador ativo = equipe.Ativo;
+        equipe.Mochila.Tirar(tipo);
+
+        int cura = 0;
+        if (tipo == TipoItem.KitMedico)
+        {
+            cura = ativo.Curar(UnityEngine.Mathf.RoundToInt(ativo.VidaMaxima * Itens.CURA_KIT_MEDICO));
+            Registro.Add(ativo.Dados.nome + " usou " + Itens.Nome(tipo) + " e recuperou " + cura + " de vida.");
+        }
+        else
+        {
+            // vale nesta rodada e nas 3 seguintes
+            ativo.TomarPocao(tipo, Rodada + Itens.RODADAS_POCAO);
+            Registro.Add(ativo.Dados.nome + " tomou " + Itens.Nome(tipo) + ".");
+        }
+
+        UltimoItem = new ResultadoItem { Jogador = JogadorDaVez, Tipo = tipo, Cura = cura };
 
         FimDaAcao();
         return true;
@@ -170,8 +214,8 @@ public class Batalha
 
     int QuemComeca()
     {
-        int vel1 = Equipes[0].Ativo.Dados.velocidade;
-        int vel2 = Equipes[1].Ativo.Dados.velocidade;
+        int vel1 = Equipes[0].Ativo.Atributos.velocidade;
+        int vel2 = Equipes[1].Ativo.Atributos.velocidade;
 
         if (vel1 > vel2) return 0;
         if (vel2 > vel1) return 1;
